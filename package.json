@@ -1,0 +1,14 @@
+{
+  "name": "act-acre-product-page",
+  "version": "1.0.0",
+  "description": "Act+Acre responsive product page",
+  "source": "src/index.html",
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0"
+  }
+}

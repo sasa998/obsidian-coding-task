@@ -1,0 +1,520 @@
+@use "variables" as *;
+@use "reset";
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+.header {
+  border-bottom: 1px solid $color-border;
+  position: sticky;
+  top: 0;
+  background: $color-bg;
+  z-index: 100;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px $container-padding;
+    max-width: $container-max-width;
+    margin: 0 auto;
+  }
+
+  &__logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 30px;
+
+    @include mobile {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: $color-bg;
+      padding: 20px;
+      border-bottom: 1px solid $color-border;
+      gap: 15px;
+
+      &.is-open {
+        display: flex;
+      }
+    }
+  }
+
+  &__nav-link {
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: $color-primary;
+    color: $color-bg;
+    font-size: 0.65rem;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: scale(0);
+    transition:
+      opacity 0.3s,
+      transform 0.3s;
+
+    &.is-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+
+    @include mobile {
+      display: flex;
+    }
+
+    img {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+.breadcrumb {
+  padding: 15px 0;
+  font-size: 0.7rem;
+  letter-spacing: 0.5px;
+  color: $color-text-light;
+
+  @include mobile {
+    padding: 10px 0;
+    font-size: 0.6rem;
+  }
+
+  a:hover {
+    color: $color-primary;
+  }
+
+  span {
+    margin: 0 8px;
+  }
+}
+
+.product {
+  padding: 0 0 60px;
+
+  .container {
+    padding: 0;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+  }
+
+  &__image--mobile {
+    display: none;
+    @include mobile {
+      display: block;
+    }
+  }
+
+  &__image--desktop {
+    display: block;
+    @include mobile {
+      display: none;
+    }
+  }
+
+  &__info {
+    padding-top: 20px;
+    padding-right: $container-padding;
+
+    @include mobile {
+      padding: 0 $container-padding;
+    }
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+
+  &__subtitle {
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color-text-light;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid $color-border;
+  }
+
+  &__description {
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: $color-text;
+    margin-bottom: 25px;
+  }
+
+  &__badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 30px;
+
+    @include mobile {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  }
+
+  &__badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    &-icon {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+
+      img {
+        width: 36px;
+        height: 36px;
+      }
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+    padding-top: 25px;
+    border-top: 2px solid $color-border;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    cursor: pointer;
+
+    input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      border: 1px solid #9f938b;
+      border-radius: 50%;
+      flex-shrink: 0;
+      position: relative;
+      cursor: pointer;
+
+      &:checked::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #9f938b;
+      }
+    }
+
+    &-label {
+      display: flex;
+      gap: 6px;
+    }
+
+    &-price {
+      font-weight: 500;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    @include mobile {
+      flex-direction: row;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    border: 1px solid $color-border;
+    height: 48px;
+
+    button {
+      width: 40px;
+      height: 100%;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+
+      &:hover {
+        background: $color-bg-light;
+      }
+    }
+
+    &-value {
+      width: 40px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+
+  &__add-to-cart {
+    flex: 1;
+    height: 48px;
+    background: $color-btn;
+    color: $color-bg;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    border: 1px solid $color-btn;
+    cursor: pointer;
+    transition:
+      background 0.3s,
+      color 0.3s,
+      border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      background: #b09a9a;
+    }
+
+    &.is-added {
+      background: $color-added;
+      border-color: $color-added;
+    }
+  }
+}
+
+.accordion {
+  max-width: 45%;
+  padding-left: 10%;
+
+  @include mobile {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+
+  &__item {
+    border-bottom: 1px solid $color-border;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    width: 100%;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    color: $color-text;
+  }
+
+  &__icon {
+    font-size: 1.3rem;
+    font-weight: 300;
+    transition: transform 0.3s;
+  }
+
+  &__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+
+    &.is-open {
+      max-height: 300px;
+    }
+  }
+
+  &__text {
+    padding-bottom: 20px;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: $color-text;
+  }
+}
+
+.also-like {
+  padding: 60px $container-padding;
+  text-align: center;
+  max-width: $container-max-width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 35px;
+  }
+}
+
+.product-card {
+  text-align: left;
+
+  &__image {
+    width: 100%;
+    margin-bottom: 15px;
+    background: $color-bg-light;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__name {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  &__subtitle {
+    font-size: 0.7rem;
+    color: $color-text-light;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+  }
+
+  &__price {
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 90%;
+  width: 90%;
+
+  &__track {
+    display: flex;
+    gap: 30px;
+    overflow: hidden;
+    flex: 1;
+
+    @include mobile {
+      gap: 15px;
+    }
+  }
+
+  &__slide {
+    flex: 0 0 calc((100% - 60px) / 3);
+
+    @include mobile {
+      flex: 0 0 100%;
+    }
+  }
+
+  &__prev,
+  &__next {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: $color-primary;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
