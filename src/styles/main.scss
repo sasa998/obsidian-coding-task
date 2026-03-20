@@ -102,6 +102,16 @@
     }
   }
 
+  &__left {
+    display: none;
+    align-items: center;
+    gap: 12px;
+
+    @include mobile {
+      display: flex;
+    }
+  }
+
   &__hamburger {
     display: none;
     flex-direction: column;
@@ -115,6 +125,26 @@
     img {
       width: 22px;
       height: 22px;
+    }
+  }
+
+  &__search-mobile {
+    display: none;
+    align-items: center;
+
+    @include mobile {
+      display: flex;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__icon--search-desktop {
+    @include mobile {
+      display: none;
     }
   }
 }

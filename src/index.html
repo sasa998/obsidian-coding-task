@@ -15,9 +15,14 @@
   <body>
     <header class="header">
       <div class="header__inner">
-        <button class="header__hamburger" aria-label="Toggle menu">
-          <img src="../assets/icons/hamburger.svg" alt="" />
-        </button>
+        <div class="header__left">
+          <button class="header__hamburger" aria-label="Toggle menu">
+            <img src="../assets/icons/hamburger.svg" alt="" />
+          </button>
+          <a href="#" class="header__search-mobile" aria-label="Search">
+            <img src="../assets/icons/search.svg" alt="" />
+          </a>
+        </div>
 
         <a href="/" class="header__logo">
           <img src="../assets/images/logo.png" alt="Act+Acre" />
@@ -32,7 +37,11 @@
         </nav>
 
         <div class="header__icons">
-          <a href="#" class="header__icon" aria-label="Search">
+          <a
+            href="#"
+            class="header__icon header__icon--search-desktop"
+            aria-label="Search"
+          >
             <img src="../assets/icons/search.svg" alt="" />
           </a>
           <a href="#" class="header__icon" aria-label="Account">
